@@ -19,6 +19,24 @@ console.log(array1.findIndex(findFirstLargeNumber));
   }
   ```
 
+> 高阶函数累加器 reduce
+total	必需。初始值, 或者计算结束后的返回值。
+currentValue	必需。当前元素
+currentIndex	可选。当前元素的索引
+arr	可选。当前元素所属的数组对象。
+initialValue	可选。传递给函数的初始值
+
+```javascript
+array.reduce((total,currentValue, index,array)=>{
+  return total += currentValue
+},initialValue)
+
+let numbers = [65, 44, 12, 4];
+numbers.reduce((total,num)=>{
+	return total += Number(num)
+},0)
+```
+
 ### 1.Github页面修改仓库信息
 > 跑到自己的仓库那,找到Setting的tag, 点进去后Options的Settings就可以设定Repository name.
 ### 2.修改本地仓库信息
