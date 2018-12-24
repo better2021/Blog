@@ -20,11 +20,11 @@ console.log(array1.findIndex(findFirstLargeNumber));
   ```
 
 > 高阶函数累加器 reduce
-total	必需。初始值, 或者计算结束后的返回值。
-currentValue	必需。当前元素
-currentIndex	可选。当前元素的索引
-arr	可选。当前元素所属的数组对象。
-initialValue	可选。传递给函数的初始值
+- total	必需。初始值, 或者计算结束后的返回值。
+- currentValue	必需。当前元素
+- currentIndex	可选。当前元素的索引
+- arr	可选。当前元素所属的数组对象。
+- initialValue	可选。传递给函数的初始值
 
 ```javascript
 array.reduce((total,currentValue, index,array)=>{
@@ -35,6 +35,36 @@ let numbers = [65, 44, 12, 4];
 numbers.reduce((total,num)=>{
 	return total += Number(num)
 },0)
+```
+
+### 获取url的？后面的参数
+```javascript
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    if (window.location.href.split("?")[1] != undefined) {
+      var r = window.location.href.split("?")[1].match(reg);
+      if (r == undefined && window.location.href.split("?").length > 2) {
+        r = window.location.href.split("?")[2].match(reg);
+      }
+      if (r != null) return decodeURI(r[2]);
+      return null;
+    }
+  },
+```
+
+
+### 数组去重
+```javascript
+Array.prototype.unique = function(){
+  for(var i = 0; i < this.length; i++){
+    for(var j = i+1; j < this.length; j++){
+      if(this[i] == this[j]){
+        this.splice(j,1);
+      }
+    }
+  }
+  return this;
+};
 ```
 
 ### 1.Github页面修改仓库信息
