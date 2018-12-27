@@ -20,4 +20,4 @@
 ```     
 #### 下面两句就是配置css Module
 > - modules: true,  //在less中开启css module
-  - localIndetName: "[name]__[local]__[hash:base64:5]" //css module编译后的css名
+>  - localIndetName: "[name]__[local]__[hash:base64:5]" //css module编译后的css名
