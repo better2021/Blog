@@ -21,3 +21,34 @@
 #### 下面两句就是配置css Module
 > - modules: true,  //在less中开启css module
 >  - localIndetName: "[name]__[local]__[hash:base64:5]" //css module编译后的css名
+
+
+
+
+### 配置代码检查eslint与格式化代码
+> vscode 安装插件 Prettier、Vetur、ESlint。
+> 配置全局 setting.json:
+```javascript
+"vetur.validation.template": false,
+"prettier.disableLanguages": [],
+"prettier.eslintIntegration": true,
+"eslint.autoFixOnSave": true,
+"eslint.alwaysShowStatus": true,
+"eslint.validate": [
+  "javascript",
+  "javascriptreact",
+  {
+    "language": "vue",
+    "autoFix": true
+  }
+]
+```
+
+> 配置工作区 setting.json:
+```javascript
+"settings": {
+  "eslint.validate": [
+    "javascript", { "autoFix": true, "language": "vue" }
+  ]
+}
+```
