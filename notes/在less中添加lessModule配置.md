@@ -23,7 +23,7 @@
 >  - localIndetName: "[name]__[local]__[hash:base64:5]" //css module编译后的css名
 
 
-
+----
 
 ### 配置代码检查eslint与格式化代码
 > vscode 安装插件 Prettier、Vetur、ESlint。
