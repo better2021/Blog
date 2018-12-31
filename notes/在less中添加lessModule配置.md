@@ -29,19 +29,39 @@
 > vscode 安装插件 Prettier、Vetur、ESlint。
 > 配置全局 setting.json:
 ```javascript
-"vetur.validation.template": false,
-"prettier.disableLanguages": [],
-"prettier.eslintIntegration": true,
-"eslint.autoFixOnSave": true,
-"eslint.alwaysShowStatus": true,
-"eslint.validate": [
-  "javascript",
-  "javascriptreact",
-  {
-    "language": "vue",
-    "autoFix": true
-  }
-]
+{
+  //代码格式保存时格式化配置
+  "files.autoSave": "off",
+  "editor.tabSize": 2,
+  "window.zoomLevel": 0,
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "'Fira Code Retina', Consolas, 'Courier New', monospace",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 24,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "git.ignoreMissingGitWarning": true,
+  "emmet.triggerExpansionOnTab": true,
+  "prettier.singleQuote": true,
+  "prettier.semi": true,
+  "editor.formatOnSave": true,
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+
+  //eslint配置
+  "vetur.validation.template": false,
+  "prettier.disableLanguages": [],
+  "prettier.eslintIntegration": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ]
+}
 ```
 
 > 配置工作区 setting.json:
