@@ -184,6 +184,18 @@ var a ={
 var b = a.fn;
 b.call(a,1,2)       // 3
 
+
+var obj = {
+  name: 'linxin'
+}
+
+function func(age, sex) {
+  console.log(this.name,age,sex);
+}
+
+func.call(obj,12,'女');         // linxin 12 女
+func.apply(obj, [18, '女']);        //linxin 18 女
+
 ```
 
 > bind()方法创建一个新的函数, 当被调用时，将其 this 关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。
