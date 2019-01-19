@@ -8,3 +8,5 @@
 > [正则表达式](https://github.com/feiyuWeb/Blog/blob/master/notes/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.md)  
 
 > [less及eslint的配置](https://github.com/feiyuWeb/Blog/blob/master/notes/%E5%9C%A8less%E4%B8%AD%E6%B7%BB%E5%8A%A0lessModule%E9%85%8D%E7%BD%AE.md)
+
+> [es6语法学习](https://github.com/feiyuWeb/Blog/blob/master/notes/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
