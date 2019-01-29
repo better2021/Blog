@@ -55,6 +55,7 @@ function getQueryString(name) {
 
 ### 数组去重
 ```javascript
+// es5的方法
 Array.prototype.unique = function(){
   for(var i = 0; i < this.length; i++){
     for(var j = i+1; j < this.length; j++){
@@ -65,6 +66,24 @@ Array.prototype.unique = function(){
   }
   return this;
 };
+
+// es6的方法
+let arr = [2,3,6,2,5,6]
+Array.from(new Set(arr)) //[2, 3, 6, 5]
+```
+
+### 获取数组中的最大值与最小值
+```js
+// 获取数组中的最大值与最小值
+let arr = [2,3,9,6,5]
+
+undefined
+// 获取最大值
+Math.max.apply(Math,arr)	//9
+
+// 获取最小值
+Math.min.apply(Math,arr)	//2
+
 ```
 
 ### 1.Github页面修改仓库信息
