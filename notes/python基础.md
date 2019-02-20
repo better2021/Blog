@@ -31,4 +31,25 @@ for name in names:
 #Python提供一个range()函数，可以生成一个整数序列，再通过list()函数可以转换为list。比如range(5)生成的序列是从0开始小于5的整数
 list(range(5))
 [0, 1, 2, 3, 4]
+
+# 字典的key值循环
+d = {'a': 1, 'b': 2, 'c': 5}
+for key in  d:
+  print(key) # a,b,c
+
+# 字典的value值循环
+for value in d.values():
+  print(value) # 1,2,5
+
+# 字符串也是可迭代对象，因此，也可以作用于for循环
+for i in 'asdf':
+  print(i)  # a,s,d,f
+
+list(range(2,6)) # [2,3,4,5]
+
+[x * x for x in range(1, 11) if x % 2 == 0] # [4, 16, 36, 64, 100] 筛选出仅偶数的平方
+
+L = ['HELLO','PYTHON']
+lower = [s.lower() for s in L]
+print(lower) # ['hello','python'] 转化为小写
 ```
