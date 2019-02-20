@@ -98,3 +98,6 @@ Math.min.apply(Math,arr)	//2
 ### url的转义与还原
 > encodeURI 方法的参数是一个字符串，代表整个URL。它会将元字符和语义字符之外的字符，都进行转义。encodeURIComponent只转除了语义字符之外的字符，元字符也会被转义。因此，它的参数通常是URL的路径或参数值，而不是整个URL。
 > decodeURI用于还原转义后的URL。它是encodeURI方法的逆运算。decodeURIComponent用于还原转义后的URL片段。它是encodeURIComponent方法的逆运算。
+
+### 解除chrome浏览器的跨域限制
+> chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
