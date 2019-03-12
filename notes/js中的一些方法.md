@@ -103,6 +103,6 @@ Math.min.apply(Math,arr)	//2
 > chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
 
 ### css的毛玻璃效果
-***background-attachment: fixed 
+***background-attachment: fixed;
 filter: bulr() 
 实现毛玻璃效果***
