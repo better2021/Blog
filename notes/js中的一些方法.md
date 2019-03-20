@@ -106,3 +106,6 @@ Math.min.apply(Math,arr)	//2
 ***background-attachment: fixed;
 filter: bulr() 
 实现毛玻璃效果***
+
+### 在谷歌瀏覽器中的console中輸入以下代碼即可編輯頁面
+document.body.contentEditable = 'true'
