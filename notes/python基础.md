@@ -52,4 +52,12 @@ list(range(2,6)) # [2,3,4,5]
 L = ['HELLO','PYTHON']
 lower = [s.lower() for s in L]
 print(lower) # ['hello','python'] 转化为小写
+
+def is_odd(n):
+  return n%2 == 0
+
+odd = list(filter(is_odd,[1,2,3,4,5,6,7,8,9]))  # filter是高阶函数，刷选数据
+print(odd)  # 2,4,6,8
 ```
+
+> 高阶函数 =》 能接受函数作为参数的函数称为高阶函数
