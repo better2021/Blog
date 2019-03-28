@@ -1,5 +1,6 @@
 ### 适配Iphone
-1，iphone清除input默认样式  
+1，iphone清除input默认样式
+---  
 `-webkit-appearance:none;`
     
 2，苹果手机默认行为 
@@ -14,9 +15,11 @@ user-select:none;
 ```
 
 3，苹果滑动卡顿（设置overflow:auto;）
+---
 `-webkit-overflow-scrolling: touch;`
 
 4,点击会出现闪烁
+---
 `-webkit-tap-highlight-color:rgba(0,0,0,0);`
 
 5，解决ios双击页面上移问题
