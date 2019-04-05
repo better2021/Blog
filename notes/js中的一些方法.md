@@ -109,3 +109,8 @@ filter: bulr()
 
 ### 在谷歌瀏覽器中的console中輸入以下代碼即可編輯頁面
 document.body.contentEditable = 'true'
+
+### 在浏览器中打开word，ppt,pdf等文档
+https://view.officeapps.live.com/op/view.aspx?src=https://res.wxsrtgg.com/2019_04_05_16_31_05_462/e42bf29e-23f0-4700-b34d-b860b0a21c27.%E8%AF%B7%E5%81%87%E5%8D%95%E6%A8%A1%E6%9D%BF.xlsx
+
+> `https://view.officeapps.live.com/op/view.aspx?src=`后面加文件的绝对地址就可以在浏览器中预览文档了
