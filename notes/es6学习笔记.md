@@ -517,3 +517,14 @@ for (let [key, value] of entries(obj)) {
   console.log([key, value]); // ['a', 1], ['b', 2], ['c', 3]
 }
 ```
+
+### 数组的解构
+```js
+// bad
+const spliteLocale = locale.splite("-");
+const language = spliteLocale[0];
+const country = spliteLocale[1];
+
+// good
+const [language, country] = locale.splite('-');
+```

@@ -59,3 +59,45 @@
 > 图示
 
 ![grid的响应式布局](https://pic4.zhimg.com/80/v2-f71f850a97bed455ea6953c1bd7063b3_hd.png)
+
+
+### 手机端横竖屏媒体查询
+```js
+  <link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css">    // 竖放加载
+	<link rel="stylesheet" media="all and (orientation:landscape)"href="landscape.css">   // 横放加载
+```
+
+> 竖屏时使用的样式
+```js
+<style media="all and (orientation:portrait)" type="text/css">
+		#landscape { display: none; }
+	</style>
+```
+
+> 竖屏时的样式
+```
+<style media="all and (orientation:landscape)" type="text/css">
+		#portrait { display: none; }
+</style>
+```
+
+```js
+// 解决ios safari tab在后台会遭遇进程冻结问题
+// http://www.apple.com/safari/#gallery-icloud-tabs
+// Safari takes advantage of power-saving technologies such as App Nap, which puts background Safari tabs into a low-power state until you start using them again. In addition, Safari Power Saver conserves battery life by intelligently pausing web videos and other plug‑in content when they’re not front and center on the web pages you visit. All told, Safari on OS X Mavericks lets you browse up to an hour longer than with Chrome or Firefox.1
+
+importScripts('/socket.io/socket.io.js');
+
+var count = 0,
+	targetURL = ''
+	; 
+
+var socket = io.connect('/');
+socket.on('navigate', function (data) {
+  count = count++;
+  postMessage({targetURL:data.url,count:count});
+});
+```
+
+<input type=file accept="video/*">  // 上传视频(默认刷选出文件夹中的视频格式)
+<input type=file accept="image/*">  // 上传图片(默认刷选出文件夹中的图片格式)
