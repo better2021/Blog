@@ -17,7 +17,7 @@ console.log(array1.findIndex(findFirstLargeNumber));
       return '#' + ((Math.random() * 0xffffff) << 0).toString(16);
     }
   }
-  ```
+```
 
 > 高阶函数累加器 reduce
 - total	必需。初始值, 或者计算结束后的返回值。
@@ -84,6 +84,86 @@ Math.max.apply(Math,arr)	//9
 // 获取最小值
 Math.min.apply(Math,arr)	//2
 
+```
+
+### 深拷贝
+```js
+const deepCopy = source => {
+  if (!source || typeof source !== 'object') {
+    throw new Error('error arguments', 'shallowClone')
+  }
+  const targetObj = source.constructor === Array ? [] : {}
+  for (let keys in source) {
+    if (source.hasOwnProperty(keys)) {
+      if (source[keys] && typeof source[keys] === 'object') {
+        targetObj[keys] = deepCopy(source[keys])
+      } else {
+        targetObj[keys] = source[keys]
+      }
+    }
+  }
+  return targetObj
+}
+```
+
+### 函数防抖
+```js
+function debounce(fn, delay) {
+  let timer = null;
+  return function () {
+      let context = this
+      let args = arguments
+      if (timer) {
+          clearTimeout(timer);
+          timer = null;
+      }
+      timer = setTimeout(function () {
+          fn.apply(context, args)
+      }, delay)
+  }
+}
+
+let fn = function () {
+  console.log('boom')
+}
+
+setInterval(debounce(fn,500),1000) // 第一次在1500ms后触发，之后每1000ms触发一次
+setInterval(debounce(fn,2000),1000) // 不会触发一次（我把函数防抖看出技能读条，如果读条没完成就用技能，便会失败而且重新读条）
+```
+
+### 函数节流
+```js
+// 时间戳方式
+let throttle = (fn, delayTime) = >{
+	let _start = Date.now();
+	return
+	function() {
+		let _now = Date.now(),
+		context = this,
+		args = arguments;
+		if (_now - _start >= delayTime) {
+			fn.apply(context, args);
+			_start = Date.now();
+		}
+	}
+}
+
+// 定时器方式
+let throttle = function(fn, delayTime) {
+	let flag;
+	return
+	function() {
+		let context = this,
+		args = arguments;
+		if (!flag) {
+			flag = setTimeout(function() {
+				fn.apply(context, args);
+				flag = false;
+			},
+			delayTime);
+		}
+	}
+}
 ```
 
 ### 1.Github页面修改仓库信息
