@@ -166,6 +166,32 @@ let throttle = function(fn, delayTime) {
 }
 ```
 
+### 随机数范围
+```js
+function randNum(min, max) {
+    return Math.floor(min + Math.random() * ((max+1) - min));
+}
+randNum(0,10) // 生成0-10的随机数
+```
+
+### 金额转换为千分位
+```js
+function replaceMoney(str) {
+    return String(str).replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,')
+}
+replaceMoney(1236.36) //"1,236.36"
+```
+
+### 判断函数中的类型
+```js
+function typeFn(obj){
+  return Object.prototype.toString.call(obj).slice(8, -1)
+}
+
+let a = 'add'
+typeFn(a) // String
+```
+
 ### 1.Github页面修改仓库信息
 > 跑到自己的仓库那,找到Setting的tag, 点进去后Options的Settings就可以设定Repository name.
 ### 2.修改本地仓库信息
