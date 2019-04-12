@@ -192,6 +192,9 @@ let a = 'add'
 typeFn(a) // String
 ```
 
+### 检测一次打开网站的运行时间
+> performance.now() //单位是毫秒，表示距离网页加载的时间
+
 ### 1.Github页面修改仓库信息
 > 跑到自己的仓库那,找到Setting的tag, 点进去后Options的Settings就可以设定Repository name.
 ### 2.修改本地仓库信息
