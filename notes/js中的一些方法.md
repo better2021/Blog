@@ -192,6 +192,14 @@ let a = 'add'
 typeFn(a) // String
 ```
 
+### axios中的请求
+> GET请求传参用params
+> 其他(POST，PUT等)请求用data
+
+### fetch中的请求
+> GET请求用qyery
+> 其他请求(POST，PUT,DETELE等) 请求用body
+
 ### 检测一次打开网站的运行时间
 > performance.now() //单位是毫秒，表示距离网页加载的时间
 
