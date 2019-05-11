@@ -192,6 +192,17 @@ let a = 'add'
 typeFn(a) // String
 ```
 
+### axios中的请求
+> `GET`请求传参用`params`
+> 其他(POST，PUT等)请求用`data`
+
+### fetch中的请求
+> `GET`请求用`qyery`
+> 其他请求(POST，PUT,DETELE等) 请求用`body`
+
+### 检测一次打开网站的运行时间
+> performance.now() //单位是毫秒，表示距离网页加载的时间
+
 ### 1.Github页面修改仓库信息
 > 跑到自己的仓库那,找到Setting的tag, 点进去后Options的Settings就可以设定Repository name.
 ### 2.修改本地仓库信息

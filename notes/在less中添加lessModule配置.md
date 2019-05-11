@@ -75,3 +75,29 @@
 
 vscode的插件
 [![alt vscode的插件](https://i.loli.net/2019/03/06/5c7f37fd58f67.jpg "title")](https://i.loli.net/2019/03/06/5c7f37fd58f67.jpg)
+
+
+#### vue项目中可以配置一个config文件
+```js
+const isDev = /^(192\.168|localhost)/.test(window.location.host)
+
+if (!isDev) {
+  console.log = () => {}
+  console.info = () => {}
+  console.warn = () => {}
+}
+
+export default {
+  baseURL: 'http://www.baidu.com:8081/',
+}
+```
+
+
+#### 如果git上的文件无法commit 也不能丢弃或切换分支时
+请按照以下步骤操作：
+
+1- git stash 
+2- git add。
+3- git commit -m“你的提交消息”
+
+git stash删除了我所有的更改，那里有10个小时的工作
