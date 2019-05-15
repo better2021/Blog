@@ -5,7 +5,8 @@
 ```js
 function handleCopy(row) {
   var xhr = new XMLHttpRequest()
-  // xhr.open的第一个参数是请求方式，第二个参数是请求地址，第三个参数是一个布尔值（ture为同步请求，false为异步请求）
+  /* xhr.open的第一个参数是请求方式，第二个参数是请求地址，第三个参数是一个布尔值，此参数默认为ture异步，
+  （false为同步请求，ture为异步请求）*/
   xhr.open("GET", `${environment.api}/movie/address/${row.id}`, false) // clipboard需要在同步中处理数据
   xhr.setRequestHeader("pl", "admin") // setRequestHeader设置xhr的请求头，需要在xhr.open之后，在xhr.open之前设置
   xhr.setRequestHeader(
