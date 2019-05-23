@@ -1,11 +1,13 @@
 ### 微信sdk的config签名配置
 
 ***传给接口的参数url必须是当前地址#前面的地址`location.href.split("#")[0]`***
+> 请求config配置参数的接口的ip要加入微信开发者的平台的ip白名单
+> 访问的当前域名要绑定到微信开发者平台
 
 ```js
 $(function() {
         $.ajax({
-          url: "https://xxxxxxx/weixin.php",
+          url: "https://xxxxxxx/weixin.php",    // 接口的ip要加入微信开发者的平台的ip白名单
           method: "GET",
           dataType: "json",
           data: { url: location.href.split("#")[0] }, // 当前地址#前面的部分，必须要完整的（带http的）
