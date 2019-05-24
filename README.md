@@ -11,4 +11,4 @@
 
 > [es6语法学习](https://github.com/feiyuWeb/Blog/blob/master/notes/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
 
-### 更多blog文章请看notes文件夹
+### [更多blog文章请看notes文件夹](https://github.com/feiyuWeb/Blog/tree/master/notes)
