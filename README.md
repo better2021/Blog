@@ -10,3 +10,5 @@
 > [less及eslint的配置](https://github.com/feiyuWeb/Blog/blob/master/notes/%E5%9C%A8less%E4%B8%AD%E6%B7%BB%E5%8A%A0lessModule%E9%85%8D%E7%BD%AE.md)
 
 > [es6语法学习](https://github.com/feiyuWeb/Blog/blob/master/notes/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
+
+### 更多blog文章请看notes文件夹
