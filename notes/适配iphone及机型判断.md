@@ -112,8 +112,8 @@ function detectPlatform(){ // 判断是否是微信
 ```
 
 ### ios及安卓应用下载
-```
 > 安卓下载直接跳转安卓包地址(.apk文件)就可以下载了，ios应用的下载需要`itms-services://?action=download-manifest&url=`之后拼接应用地址
+```
 if (isiOS) {
   window.location =
     "itms-services://?action=download-manifest&url=" + 'http://xxxxxxx'
