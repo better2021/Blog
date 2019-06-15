@@ -217,6 +217,29 @@ sleep(3000).then(() => {
 })
 ```
 
+### `rem` 布局不再使用 `JavaScript` 设置
+
+需求
+
+> 有时候，移动端用 `rem` 布局时候，根据不同的屏幕宽度要设置不同的 `font-size` 来做到适配，要写一坨 `JS` 来设置，能不能不用`JS`呢？
+> 例如：以 `750px` 设计稿作为基准，根节点设置 `font-size` 为 `100px` ,只考虑 `DPR` 为 2 的情况，只考虑最简单的情况
+
+```js
+document.querySelector("html").style.fontSize = `${window.innerWidth / 7.5}px`
+```
+
+代码
+
+> 现在移动端 `css3` 单位 `vw` ,`vh` 兼容性已经很不错了，在不需要兼容太低版本的安卓机情况下可以这样来：
+
+```js
+html{
+  font-size: calc(100vw  /  7.5)
+}
+```
+
+> 就这么简单的设置，`rem` 就可以使用了
+
 ### axios 中的请求
 
 > `GET`请求传参用`params`
