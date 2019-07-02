@@ -240,6 +240,20 @@ html{
 
 > 就这么简单的设置，`rem` 就可以使用了
 
+### 利用 transparent 属性实现各种三角形，提示框
+```js
+<div id="triangle-right"></div>
+#triangle-right {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-top: 100px solid red;
+    border-right: 50px solid transparent;
+    border-radius:10px;
+}
+```
+![三角形](https://i.loli.net/2019/06/15/5d04b27a2245010916.png)
+
 ### axios 中的请求
 
 > `GET`请求传参用`params`
