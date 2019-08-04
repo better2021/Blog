@@ -110,7 +110,7 @@ if(offsetTop < scrollTop + clientHeight && offsetTop + objHeight > scrollTop) { 
 图片上传时的格式限制； accept="image/*" //限制只能上传图片格式
 ---
 例子：
-···html
+```html
 <input class="changeHead" type="file" enctype="multipart/form-data" id="drivingLicence"
        name="file" accept="image/*" @change='getFile($event)'/>
 ```
