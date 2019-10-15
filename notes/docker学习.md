@@ -39,14 +39,31 @@ docker volume ls                    # 查看数据卷
 docker volume prune                 # 删除无主数据卷
 ```
 
+### 运行镜像文件
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+```go
+docker run -p 8081:80 --name mynginx  -d nginx
+```
+
 ### Dockerfile指令
 - FROM <可用的镜像名>
 - MAINTAINER <name>
 - RUN 
 - EXPOSE
 
+- CMD // 可以当做RUN指令的默认指令，RUN的优先权更高
+- ENTERYPOINT
+- ADD
+- COPY
+- VOLUME
+
+- WORKDIR
+- ENV
+- USER
+
+
 > 例如：
-FROMubuntu:14.04
+FROM ubuntu:14.04
 MAINTAINER dormancypress "dormancypress@outlook.com"
 RUN yum update
 RUN yum install -y nginx
