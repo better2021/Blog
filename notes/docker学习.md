@@ -87,6 +87,7 @@ RUN npm install       // 安装依赖，安装后的所有依赖都将打包到 
 EXPOSE 3000           // 暴露 3000 端口，允许外部连接这个端口
 ```
 
+![Dockerfile指令](https://i.loli.net/2019/10/15/A97FQVGICh4B1Lb.png)
 
 ### 创建 image 镜像
 配置好 Dockerfile 文件之后，即可创建自己的 image 镜像文件
