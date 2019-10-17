@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myCanvas"></canvas>
+    <div>
+      <canvas class="pic"></canvas>
+    </div>
+  </body>
+  <script type="text/javascript">
+    /**
+       绘制矩形 
+    */
+    let c = document.getElementById('myCanvas');
+    c.width = 300;
+    c.height = 150;
+    // 获取canvas上的context对象
+    let ctx = c.getContext('2d');
+    ctx.fillStyle = 'pink';
+    ctx.fillRect(0, 0, 300, 150);
+
+    /*
+      绘制路劲
+    */
+    ctx.moveTo(0, 0); // 开始坐标
+    ctx.lineTo(200, 100); // 结束坐标
+    ctx.stroke();
+
+    /*
+      绘制圆形
+    */
+    ctx.beginPath();
+    ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+    ctx.stroke();
+
+    /*
+      绘制文字
+    */
+    ctx.font = '30px Arial';
+    ctx.fillStyle = 'blue';
+    ctx.fillText('hello canvas', 10, 50);
+
+    /*
+      绘制图像
+    */
+    window.onload = function() {
+      let img = new Image();
+      img.src =
+        'https://static.godbmw.com/images/JavaScript/canvas%E5%AD%A6%E4%B9%A0%E5%92%8C%E6%BB%A4%E9%95%9C%E5%AE%9E%E7%8E%B0/2.png';
+
+      // 图标加载后
+      img.onload = function() {
+        var canvas = document.querySelector('.pic');
+        var ctx = canvas.getContext('2d');
+
+        //  根据image大小，指定canvas大小
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // 绘制图像
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      };
+    };
+  </script>
+</html>
