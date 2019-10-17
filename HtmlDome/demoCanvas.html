@@ -8,13 +8,13 @@
   </head>
   <body>
     <canvas id="myCanvas"></canvas>
-    <div>
+    <div class="box">
       <canvas class="pic"></canvas>
     </div>
   </body>
   <script type="text/javascript">
     /**
-       绘制矩形 
+       绘制矩形
     */
     let c = document.getElementById('myCanvas');
     c.width = 300;
@@ -66,5 +66,45 @@
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
       };
     };
+
+    /*
+      给元素添加属性
+    */
+    let box = document.querySelector('.box');
+    box.setAttribute('data-name', 'coco');
+    console.log(box.getAttribute('data-name'));
+    console.log(box.nodeName, box.className);
+
+    /*
+      fetch
+    */
+
+    let name = '不要说话';
+    const api = `https://api.apiopen.top/searchMusic?name=${name}`;
+    fetch(api, {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+      .then(res => res.json())
+      .then(json => console.log(json));
+
+    /*
+      跨域
+    */
+
+    // 定义回调函数
+    const handleResponse = data => {
+      console.log(data);
+    };
+
+    // 构造 <script> 标签
+    let script = document.createElement('script');
+    script.src =
+      'https://api.douban.com/v2/book/search?q=javascript&count=1&callback=handleResponse';
+
+    // 向document中添加 <script> 标签，并且发送GET请求
+    document.body.appendChild(script);
   </script>
 </html>
