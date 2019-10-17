@@ -132,10 +132,10 @@ RUN <command>
 
 > 使用`docker build`命令构建镜像，基本语法
 
-# -f 指定 Dockerfile 文件的路劲
+```go
+docker build -t feiyu/mypro:v1
+```
 
-# -t 指定镜像名字和 TAG
-
-# . 指定当前目录，这里实际上需要一个上下文路径
-
-**_ docker build -t feiyu/mypro:v1 _**
+- -f 指定 Dockerfile 文件的路劲
+- -t 指定镜像名字和 TAG
+- . 指定当前目录，这里实际上需要一个上下文路径
