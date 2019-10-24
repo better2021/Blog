@@ -5,8 +5,10 @@
   其实就是定义了操作所有关系型数据库的规则
 
 - SQl 通用语法
-  1.SQL 语句可以单行或者多行书写，以分号结尾 2.可使用空格或缩进来增强语句的可读性
-  3.MYSQL 数据库的 SQL 语句不区分大小写，关键词建议使用大写 4.三种注释:单行注释 -- 或 # ，多行注释 /_注释_/
+  1.SQL 语句可以单行或者多行书写，以分号结尾  
+  2.可使用空格或缩进来增强语句的可读性
+  3.MYSQL 数据库的 SQL 语句不区分大小写，关键词建议使用大写  
+  4.三种注释:单行注释 -- 或 # ，多行注释 /_注释_/
 
 - SQL 分类
 
@@ -25,12 +27,17 @@
   > create database if not existes db3 character set utf-8
 
 查询所有数据库的名称 `show databases;`
+
 选择一个数据库 `use test;` # use 数据库名称
+
 查看某个库中的表 `show tables;`
+
 查询某个表中的数据 `select * from users;` # `select * from 表名`
+
 查看某个表的信息 `desc users;` # desc 表名
 
 修改数据库的字符集 `alter database 数据库名称 character set 字符集名称;`
+
 删除数据库 `drop database 数据库名称;`
 
 - 操作数据库：CRUD
