@@ -5,6 +5,7 @@
   其实就是定义了操作所有关系型数据库的规则
 
 - SQl 通用语法
+
   1.SQL 语句可以单行或者多行书写，以分号结尾  
   2.可使用空格或缩进来增强语句的可读性
   3.MYSQL 数据库的 SQL 语句不区分大小写，关键词建议使用大写  
@@ -60,3 +61,28 @@ create_time timestamp
 添加一列
 
 > alter table students add sex varchar(10);
+
+#### DQL:查询表中的记录
+
+`select * from 表名`
+
+语法：select 字段列表 from 表名列表 where 条件列表 group by 分组字段 having 分组之后的条件 order by 排序 limit 分页限定
+
+条件查询
+
+- where 子句就跟条件
+- 运算符
+
+> 模糊查询
+> `SELECT * from admins WHERE`name`LIKE '%xiao%'`
+
+```js
+>、<、<=、>=、=、<>
+BETWEEN...AND
+IN(集合)
+LIKE
+IS NULL
+and // 与
+or // 或
+not // 非
+```
