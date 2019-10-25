@@ -85,4 +85,7 @@ IS NULL
 and // 与
 or // 或
 not // 非
+
+order by 字段名 asc  // 升序
+order by 字段名 desc  // 降序
 ```
