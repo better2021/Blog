@@ -89,3 +89,34 @@ not // 非
 order by 字段名 asc  // 升序
 order by 字段名 desc  // 降序
 ```
+
+外键约束
+
+```js
+CREATE TABLE empoyee(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20),
+  age INT,
+  dep_id INT, // 外键对应主表的主键
+  constraint emp_dept_fk FOREIGN KEY (dep_id) REFERENCES department (id)  // emp_dept_fk 关联empoyee和department表，关键外键为dep_id,关联到department的id字段
+)
+```
+
+- 删除外键
+  ALTER TABLE 表名 DROP FOREIGN KEY 外键名称
+
+- 创建表之后，添加外键
+  ALTER TABLE 表名 ADD CONSTEAINT 外键名称 FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列表名称)
+
+- 级联操作 1.添加级联操作
+  语法：ALTER TABLE 表名 ADD CONSTRAINT 外建名称 FOREIGN KEY (外建字段名称) REFERENCES 主表名称(主表列名) ON UPDATE CASCADE ON DELETE CASADE
+
+  2.分类： 1.级联更新：ON UPDATE CASCADE 2.级联删除：ON DELETE CASCADE
+
+显式内连接：
+
+- 语法：select 字段列表 from 表名 1 inner join 表名 2 on 条件
+  例如：
+  ```js
+  select * from emp join dept on emp.`dept_id` = dept.`id`
+  ```
