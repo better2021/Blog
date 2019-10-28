@@ -120,3 +120,40 @@ CREATE TABLE empoyee(
   ```js
   select * from emp join dept on emp.`dept_id` = dept.`id`
   ```
+
+-- 查询员工工资小于平均工资的人
+
+```js
+select * from emp where emp.salary < (select avg(aslary) from emp)  // salary字段为emp表中的工资字段，avg(salary)为计算的平均工资
+```
+
+-- 查询 admins 表中 name 为 sisi 的 id 值
+
+```js
+SELECT id from admins WHERE `name`='sisi';
+```
+
+-- 下面两个查询方法是等价的，都是查询 name 为 sisi 或 coco
+
+```js
+SELECT * from admins WHERE `name`='sisi' or `name`='coco';
+SELECT * from admins WHERE `name` IN('sisi','coco')
+```
+
+-- AND 查询表示必须满足两个条件
+
+```js
+SELECT * from admins WHERE `name`='sisi' AND `sex`='girl'
+```
+
+-- 查询员工入职日期是 2018-11-11 日之后的员工信息和部门信息
+
+```js
+// 子查询
+select * from dept t1,(select * from emp where emp.`join_date` > '2018-11-11') t2 where t1.id = t2.dept_id;
+```
+
+```js
+// 左关联查询
+select t1.enname,t1.mgr,t2.`id`,t2.`enname` from emp t1 left join emp t2 on t1.`mgr` = t2.`id`
+```
