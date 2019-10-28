@@ -157,3 +157,23 @@ select * from dept t1,(select * from emp where emp.`join_date` > '2018-11-11') t
 // 左关联查询
 select t1.enname,t1.mgr,t2.`id`,t2.`enname` from emp t1 left join emp t2 on t1.`mgr` = t2.`id`
 ```
+
+```js
+// 多表查询
+select
+  t1.`ename`,
+  t1.`salary`,
+  t2.`jname`,
+  t2.`description`,
+  t3.`dname`,
+  t3.`log`,
+  t4.`grade`
+from
+  emp t1,job t2,dept t3,salarygrade t4
+where
+  t1.`job_id` = t2.`id`
+  and t1.`dept_id` = t3.`id`
+  and t1.`salary` between t4.`losalary` and t4.`hisalary`;
+
+// emp t1,job t2 表示t1为emp表的别名，t2为job表的别名，where是查询条件，例如：t1中的job_is等于t2中的id的字段
+```
