@@ -240,3 +240,32 @@ func movieDelete(c *gin.Context) {
 }
 
 ```
+
+### golang 并发
+
+channels(多个 goroutine 间的数据通信与同步)
+
+> 并发：值同一时刻，系统通过调度，来回切换交替的运行多个任务，看起来像同时进行
+> 并行： 指同一时刻，两个或多个任务真正的同时进行
+
+```go
+c := make(chan string) //  创建一个channel
+go func(){
+	time.Sleep(1 * time.Second)
+	c <- "message from closure" // 发送数据到channel中
+}()
+msg :<-c // 阻塞直到接受数据
+```
+
+select(从多个 chanel 中读取或写入数据)
+
+```go
+select{
+	case v := <-c1:
+		fmt.Println("channel 1 sends",v)
+	case v := <-c2:
+		fmt.Println("channel 2 sends",v)
+	default:
+		fmt.Println("neither channel was ready")
+}
+```
