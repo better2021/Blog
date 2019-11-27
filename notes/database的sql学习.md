@@ -180,3 +180,18 @@ for rows.Next(){
 }
 err = rows.Err()
 ```
+
+Next 可以为 Scan 方法准备好下一个待读取的数据行： 这个方法在执行成功时返回 true ； 返回 false 表示没有下一个数据行可用， 又或者准备期间发生了错误。
+通过 Err 方法可以知道 Next 是因为何种原因而执行失败的
+
+```go
+func (rs *Rows) Next() bool
+```
+
+Stmt 用于代表预处理语句， 多个 goroutine 可以安全地以并发的形式使用这种类型
+
+```go
+type Stmt struct{
+  //...
+}
+```
