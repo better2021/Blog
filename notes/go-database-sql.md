@@ -93,3 +93,33 @@ if err !=nil{
 }
 fmt.Println(name)
 ```
+
+使用 Exec()，最好使用一个准备好的语句，来完成插入、更新、删除或其他不返回行的语句
+
+```go
+stmt,err := db.Prepare("insert into users(name) values(?)")
+if err != nil{
+  log.Fatal(err)
+}
+res,err := stmt.Exec("Dolly")
+if err !=nil{
+  log.Fatal(err)
+}
+lastId,err := res.LastInsertId()
+if err != nil{
+  log.Fatal(err)
+}
+rowCnt, err := res.RowsAffected()
+if err != nil {
+	log.Fatal(err)
+}
+log.Printf("ID = %d, affected = %d\n", lastId, rowCnt)
+
+
+
+/*
+它们不会做相同的事情，而且永远不应该像这样使用Query()。查询()将返回一个sql.Rows，
+*/
+_, err := db.Exec("DELETE FROM users")  // OK
+_, err := db.Query("DELETE FROM users") // BAD
+```
