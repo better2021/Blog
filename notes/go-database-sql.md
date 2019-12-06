@@ -116,10 +116,75 @@ if err != nil {
 log.Printf("ID = %d, affected = %d\n", lastId, rowCnt)
 
 
-
 /*
 它们不会做相同的事情，而且永远不应该像这样使用Query()。查询()将返回一个sql.Rows，
 */
 _, err := db.Exec("DELETE FROM users")  // OK
 _, err := db.Query("DELETE FROM users") // BAD
+```
+
+在事务中处理准备好的语句时必须谨慎
+
+```go
+tx,err := db.Begin()
+if err != nil{
+  log.Fatal(err)
+}
+defer tx.Rollvack()
+stmt,err := tx.Prepare("insert into foo values(?)")
+if err != nil{
+  log.Fatal(err)
+}
+defer stmt.Close()
+for i:=0;i <10;i++{
+  _,err = stmt.Exec(i)
+  if err != nil{
+    log.Fatal(err)
+  }
+}
+err = tx.Commit()
+if err != nil{
+  log.Fatal(err)
+}
+```
+
+迭代结果集的错误
+
+```go
+if rows.Next(){
+  //...
+}
+if err = rows.Err();err != nil{
+  //...
+}
+```
+
+```go
+cols,err := rows.Columns()
+vals := make([]interface{},len(cols))
+for i,_ := range cols{
+  vals[i] = new(sql.RawBytes)
+}
+for rows.Next(){
+  err = rows.Scan(vals...)
+}
+```
+
+```go
+rows,err := db.Query("select * from tbll")
+for rows.Next(){
+  err = rows.Scan(&myvariable)
+  db.Query("select * from tb12 where id = ?",myvariable)
+}
+```
+
+但是事务只绑定到一个连接，所以这在事务中是不可能的
+
+```go
+tx,err := db.Begin()
+rows,err := tx.Query("select * from tbl1")
+for rows.Next(){
+  err = rows.SCan($myvariable)
+  tx.Query("select * from tbl2 where id =?",myvariable)
+}
 ```
