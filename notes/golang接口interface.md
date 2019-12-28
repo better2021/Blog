@@ -53,3 +53,83 @@ func mian(){
 ### Go 接口的特点
 
 在上述示例中，Go 无须像 Java 那样显式声明实现了哪个接口，即为非侵入式，接口编写者无需知道接口被哪些类型实现，接口实现者只需要知道实现的是什么样子的接口，但无需指明实现了哪个接口。编译器知道最终编译时使用哪个类型实现哪个接口，或者接口应该由谁来实现。
+
+```go
+type Service interface{
+  Start()
+  Log(string)
+}
+
+// 日志
+type Logger struct{
+}
+
+// 日志输出方法
+func (g *Logger) Log(s string){
+  fmt.Prinln("日志",s)
+}
+
+// 游戏服务
+type GameService struct{
+  Logger
+}
+
+// 实现游戏服务的Start方法
+func (g *GameService) Start(){
+  fmt.Prinln("游戏服务启动")
+}
+
+fun main(){
+  s := new(GameService)
+  s.Start()
+  s.Log("hello")
+}
+```
+
+### 接口嵌套
+
+Go 中不仅结构体之间可以嵌套，接口之间也可以嵌套。接口与接口嵌套形成了新的接口，只要接口的所有方法被实现，则这个接口中所有嵌套接口的方法均可以被调用
+
+```go
+// 定义一个写接口
+type Writer interface{
+  Write(p []byte) (n int, e error)
+}
+
+// 定义一个读接口
+type Reader interface{
+  Read() error
+}
+
+// 定义一个嵌套接口
+type Io interface{
+  Writer()
+  Read()
+}
+```
+
+### 空接口
+
+空接口是接口的特殊形式，没有任何方法，因此任何具体的类型都可以认为实现了空接口
+
+```go
+var ant interface{}
+any = 1
+any ="hello"
+fmt.Prinln(any)
+
+// 空接口作为函数参数：
+func Test (i interface{}){
+  fmt.Printf("%v\n",i)
+}
+
+func main(){
+  Test(3)
+  Test("hello")
+}
+
+// 利用空接口，可以实现任意类型的存储
+m := make(map[string]interface{})
+m["name"] = "李四"
+m["age"] = 30
+```
