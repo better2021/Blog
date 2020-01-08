@@ -389,3 +389,44 @@ WHERE s.gender = 'M' AND c.id = 1;
 ```
 
 ![多表条件查询](https://i.loli.net/2020/01/08/qtxKSbdoJG8XTBw.png)
+
+### 连接查询
+
+假设我们希望结果集同时包含所在班级的名称，上面的结果集只有 class_id 列，缺少对应班级的 name 列。
+现在问题来了，存放班级名称的 name 列存储在 classes 表中，只有根据 students 表的 class_id，找到 classes 表对应的行，再取出 name 列，就可以获得班级名称。
+这时，连接查询就派上了用场。我们先使用最常用的一种内连接——INNER JOIN 来实现：
+
+```sql
+SELECT s.id, s.name, s.class_id, c.name class_name, s.gender, s.score
+FROM students s
+INNER JOIN classes c
+ON s.class_id = c.id;
+```
+
+注意 INNER JOIN 查询的写法是
+
+- 先确定主表，仍然使用 `FROM <表 1>`的语法；
+- 再确定需要连接的表，使用 `INNER JOIN <表 2>`的语法；
+- 然后确定连接条件，使用 ON <条件...>，这里的条件是 s.class_id = c.id，表示 students 表的 class_id 列与 classes 表的 id 列相同的行需要连接；
+- 可选：加上 WHERE 子句、ORDER BY 等子句
+
+执行上述 RIGHT OUTER JOIN 可以看到，和 INNER JOIN 相比，RIGHT OUTER JOIN 多了一行，多出来的一行是“四班”，但是，学生相关的列如 name、gender、score 都为 NULL。
+
+这也容易理解，因为根据 ON 条件 s.class_id = c.id，classes 表的 id=4 的行正是“四班”，但是，students 表中并不存在 class_id=4 的行。
+
+有 RIGHT OUTER JOIN，就有 LEFT OUTER JOIN，以及 FULL OUTER JOIN。它们的区别是：
+
+INNER JOIN 只返回同时存在于两张表的行数据，由于 students 表的 class_id 包含 1，2，3，classes 表的 id 包含 1，2，3，4，所以，INNER JOIN 根据条件 s.class_id = c.id 返回的结果集仅包含 1，2，3。
+
+RIGHT OUTER JOIN 返回右表都存在的行。如果某一行仅在右表存在，那么结果集就会以 NULL 填充剩下的字段。
+
+LEFT OUTER JOIN 则返回左表都存在的行。如果我们给 students 表增加一行，并添加 class_id=5，由于 classes 表并不存在 id=5 的行，所以，LEFT OUTER JOIN 的结果会增加一行，对应的 class_name 是 NULL：
+
+![image.png](https://i.loli.net/2020/01/08/zcm7ZJSpTVKqxaw.png)
+
+小结
+JOIN 查询需要先确定主表，然后把另一个表的数据“附加”到结果集上；
+
+INNER JOIN 是最常用的一种 JOIN 查询，它的语法是 SELECT ... FROM <表 1> INNER JOIN <表 2> ON <条件...>；
+
+JOIN 查询仍然可以使用 WHERE 条件和 ORDER BY 排序。
