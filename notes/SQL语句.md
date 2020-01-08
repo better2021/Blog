@@ -304,3 +304,55 @@ LIMIT 3 OFFSET 6;
 
 - `LIMIT`总是设定为`pageSize`；
 - `OFFSET`计算公式为`pageSize * (pageIndex - 1)`。
+
+查询 students 表一共有多少条记录为例，我们可以使用 SQL 内置的 COUNT()函数查询
+
+```sql
+SELECT COUNT(*) FROM students;
+```
+
+`COUNT(*)`表示查询所有列的行数，要注意聚合的计算结果虽然是一个数字，但查询的结果仍然是一个二维表，只是这个二维表只有一行一列，并且列名是 `COUNT(*)`。
+
+-- 使用聚合查询并设置结果集的列名为 num:
+
+```sql
+SELECT COUNT(*) num FROM students;
+```
+
+`COUNT(*)`和`COUNT(id)`实际上是一样的效果。
+另外注意，聚合查询同样可以使用 WHERE 条件，因此我们可以方便地统计出有多少男生、多少女生、多少 80 分以上的学生等：
+
+```sql
+SELECT COUNT(*) boys FROM students WHERE gender = 'M';
+```
+
+函数 说明
+SUM 计算某一列的合计值，该列必须为数值类型
+AVG 计算某一列的平均值，该列必须为数值类型
+MAX 计算某一列的最大值
+MIN 计算某一列的最小值
+
+要统计男生的平均成绩，我们用下面的聚合查询：
+
+```sql
+/*使用聚合查询计算男生平均成绩:*/
+ SELECT AVG(score) average FROM students WHERE gender = 'M';
+ /*使用聚合查询计算女生最高成绩:*/
+ select max(score) average from students where gender = "F";
+```
+
+要特别注意：如果聚合查询的 WHERE 条件没有匹配到任何行，COUNT()会返回 0，而 SUM()、AVG()、MAX()和 MIN()会返回 NULL
+
+如果我们要统计一班的学生数量，我们知道，可以用 SELECT COUNT(\*) num FROM students WHERE class_id = 1;。
+如果要继续统计二班、三班的学生数量，难道必须不断修改 WHERE 条件来执行 SELECT 语句吗？
+
+对于聚合查询，SQL 还提供了“分组聚合”的功能。我们观察下面的聚合查询：
+
+```sql
+/*按class_id分组*/
+SELECT COUNT(*) num FROM students GROUP BY class_id;
+```
+
+![image.png](https://i.loli.net/2020/01/08/4pE8l6dkeIomayU.png)
+
+### 多表查询
