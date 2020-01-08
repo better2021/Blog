@@ -193,3 +193,45 @@ where
 - 持久性：当事务提交或回滚后，数据库会持久化的保存数据
 - 隔离性：多个事务之间，相互独立
 - 一致性：事务操作前后，数据总量不变
+
+---
+
+条件表达式可以用<条件 1> AND <条件 2>表达满足条件 1 并且满足条件 2。
+例如，符合条件“分数在 80 分或以上”，并且还符合条件“男生”，把这两个条件写出来：
+就可以写出 WHERE 条件：`score >= 80 AND gender = 'M'`：
+
+```sql
+SELECT * FROM students WHERE score >= 80 AND gender = 'M';
+```
+
+第二种条件是<条件 1> OR <条件 2>，表示满足条件 1 或者满足条件 2。
+例如，把上述 AND 查询的两个条件改为 OR，查询结果就是“分数在 80 分或以上”或者“男生”，满足任意之一的条件即选出该记录：
+很显然 OR 条件要比 AND 条件宽松，返回的符合条件的记录也更多。
+
+```sql
+SELECT * FROM students WHERE score >= 80 OR gender = 'M';
+```
+
+第三种条件是 NOT <条件>，表示“不符合该条件”的记录。
+例如，写一个“不是 2 班的学生”这个条件，可以先写出“是 2 班的学生”：class_id = 2，再加上 NOT：`NOT class_id = 2`：
+
+```sql
+SELECT * FROM students where not id > 2
+```
+
+要组合三个或者更多的条件，就需要用小括号()表示如何进行条件运算。
+例如，编写一个复杂的条件：分数在 80 以下或者 90 以上，并且是男生：
+
+```sql
+SELECT * FROM students WHERE (score < 80 OR score > 90) AND gender = 'M';
+```
+
+如果不加括号，条件运算按照 NOT、AND、OR 的优先级进行，即 NOT 优先级最高，其次是 AND，最后是 OR。加上括号可以改变优先级。
+
+使用=判断相等 score = 80 name = 'abc' 字符串需要用单引号括起来
+使用>判断大于 score > 80 name > 'abc' 字符串比较根据 ASCII 码，中文字符比较根据数据库设置
+使用>=判断大于或相等 score >= 80 name >= 'abc'
+使用<判断小于 score < 80 name <= 'abc'
+使用<=判断小于或相等 score <= 80 name <= 'abc'
+使用<>判断不相等 score <> 80 name <> 'abc'
+使用 LIKE 判断相似 name LIKE 'ab%' name LIKE '%bc%' %表示任意字符，例如'ab%'将匹配'ab'，'abc'，'abcd'
