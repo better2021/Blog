@@ -356,3 +356,36 @@ SELECT COUNT(*) num FROM students GROUP BY class_id;
 ![image.png](https://i.loli.net/2020/01/08/4pE8l6dkeIomayU.png)
 
 ### 多表查询
+
+注意，多表查询时，要使用表名.列名这样的方式来引用列和设置别名，这样就避免了结果集的列名重复问题。
+但是，用表名.列名这种方式列举两个表的所有列实在是很麻烦，所以 SQL 还允许给表设置一个别名，让我们在投影查询中引用起来稍微简洁一点：
+
+```sql
+SELECT
+    s.id sid,
+    s.name,
+    s.gender,
+    s.score,
+    c.id cid,
+    c.name cname
+FROM students s, classes c;
+```
+
+注意到 FROM 子句给表设置别名的语法是 FROM <表名 1> <别名 1>, <表名 2> <别名 2>。
+这样我们用别名 s 和 c 分别表示 students 表和 classes 表。
+
+多表查询也是可以添加 WHERE 条件的，我们来试试：
+
+```sql
+SELECT
+    s.id sid,
+    s.name,
+    s.gender,
+    s.score,
+    c.id cid,
+    c.name cname
+FROM students s, classes c
+WHERE s.gender = 'M' AND c.id = 1;
+```
+
+![多表条件查询](https://i.loli.net/2020/01/08/qtxKSbdoJG8XTBw.png)
