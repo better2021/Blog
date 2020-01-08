@@ -235,3 +235,72 @@ SELECT * FROM students WHERE (score < 80 OR score > 90) AND gender = 'M';
 使用<=判断小于或相等 score <= 80 name <= 'abc'
 使用<>判断不相等 score <> 80 name <> 'abc'
 使用 LIKE 判断相似 name LIKE 'ab%' name LIKE '%bc%' %表示任意字符，例如'ab%'将匹配'ab'，'abc'，'abcd'
+
+使用 `SELECT * FROM <表名> WHERE <条件>`可以选出表中的若干条记录。
+我们注意到返回的二维表结构和原表是相同的，即结果集的所有列与原表的所有列都一一对应。
+
+```sql
+select name,id from students where id > 5
+```
+
+使用 SELECT 列 1, 列 2, 列 3 FROM ...时，还可以给每一列起个别名，
+这样，结果集的列名就可以与原表的列名不同。它的语法是 SELECT 列 1 别名 1, 列 2 别名 2, 列 3 别名 3 FROM ...。.
+例如，以下`SELECT`语句将列名`score`重命名为`points`，而`id`和`name`列名保持不变：
+
+```sql
+select id, score points,name from studengts;
+```
+
+### 排序
+
+可以加上 ORDER BY 子句。例如按照成绩从低到高进行排序：
+
+```sql
+/* 按score从低到高*/
+select id ,name ,gender,score from students order by score;
+/* 按score从高到低*/
+select id ,name ,gender,score from students order by score desc;
+```
+
+![按score排序](https://i.loli.net/2020/01/08/o7HUxil3q5MSaJN.png)
+
+如果 score 列有相同的数据，要进一步排序，可以继续添加列名。
+例如，使用 ORDER BY score DESC, gender 表示先按 score 列倒序，如果有相同分数的，再按 gender 列排序：
+
+```sql
+SELECT id, name, gender, score FROM students ORDER BY score DESC, gender;
+```
+
+默认的排序规则是 ASC：“升序”，即从小到大。ASC 可以省略，即 ORDER BY score ASC 和 ORDER BY score 效果一样。
+
+如果有 WHERE 子句，那么 ORDER BY 子句要放到 WHERE 子句后面。例如，查询一班的学生成绩，并按照倒序排序：
+
+```sql
+SELECT id, name, gender, score
+FROM students
+WHERE class_id = 1
+ORDER BY score DESC;
+```
+
+现在，我们把结果集分页，每页 3 条记录。要获取第 1 页的记录，可以使用 LIMIT 3 OFFSET 0：
+
+```sql
+SELECT id, name, gender, score
+FROM students
+ORDER BY score DESC
+LIMIT 3 OFFSET 0;
+```
+
+上述查询 LIMIT 3 OFFSET 0 表示，对结果集从 0 号记录开始，最多取 3 条。注意 SQL 记录集的索引从 0 开始。
+
+类似的，查询第 3 页的时候，OFFSET 应该设定为 6:
+
+```sql
+SELECT id, name, gender, score
+FROM students
+ORDER BY score DESC
+LIMIT 3 OFFSET 6;
+```
+
+- `LIMIT`总是设定为`pageSize`；
+- `OFFSET`计算公式为`pageSize * (pageIndex - 1)`。
