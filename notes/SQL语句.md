@@ -430,3 +430,54 @@ JOIN 查询需要先确定主表，然后把另一个表的数据“附加”到
 INNER JOIN 是最常用的一种 JOIN 查询，它的语法是 SELECT ... FROM <表 1> INNER JOIN <表 2> ON <条件...>；
 
 JOIN 查询仍然可以使用 WHERE 条件和 ORDER BY 排序。
+
+### 修改数据
+
+当我们需要向数据库表中插入一条新记录时，就必须使用 INSERT 语句
+INSERT 语句的基本语法是：`INSERT INTO <表名> (字段1, 字段2, ...) VALUES (值1, 值2, ...)`
+
+```sql
+-- 添加一条新记录
+INSERT INTO students (class_id, name, gender, score) VALUES (2, '大牛', 'M', 80);
+-- 查询并观察结果:
+SELECT * FROM students;
+-- 一次性添加多条新记录
+INSERT INTO students (class_id, name, gender, score) VALUES(2,"qq","M",85),(1,"wechat","F",86);
+```
+
+如果要更新数据库表中的记录，我们就必须使用 UPDATE 语句。
+UPDATE 语句的基本语法是：`UPDATE <表名> SET 字段1=值1, 字段2=值2, ... WHERE ...;`
+例如，我们想更新 students 表 id=1 的记录的 name 和 score 这两个字段，先写出 UPDATE students SET name='大牛', score=66，
+然后在 WHERE 子句中写出需要更新的行的筛选条件 id=1：
+
+```sql
+UPDATE students SET name='大牛', score=66 WHERE id=1;
+-- 查询并观察结果:
+SELECT * FROM students WHERE id=1;
+```
+
+注意到 UPDATE 语句的 WHERE 条件和 SELECT 语句的 WHERE 条件其实是一样的，因此完全可以一次更新多条记录
+
+```sql
+-- 更新id=5,6,7的记录
+UPDATE students SET name='小牛', score=77 WHERE id>=5 AND id<=7;
+-- 查询并观察结果:
+SELECT * FROM students;
+-- 更新id=5,6,7的记录
+UPDATE students SET name='小牛', score=77 WHERE id>=5 AND id<=7;
+-- 查询并观察结果:
+SELECT * FROM students;
+-- 更新score<80的记录
+UPDATE students SET score=score+10 WHERE score<80;
+-- 查询并观察结果:
+SELECT * FROM students;
+```
+
+其中，SET score=score+10 就是给当前行的 score 字段的值加上了 10。
+最后，要特别小心的是，UPDATE 语句可以没有 WHERE 条件，例如：
+
+```sql
+UPDATE students SET score=60;
+```
+
+这时，整个表的所有记录都会被更新。所以，在执行 UPDATE 语句时要非常小心，最好先用 SELECT 语句来测试 WHERE 条件是否筛选出了期望的记录集，然后再用 UPDATE 更新。
