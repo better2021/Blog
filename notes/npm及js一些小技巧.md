@@ -167,3 +167,42 @@ Array.from(document.images).forEach(item=>{
 console.log(JSON.stringify(arr))
 ```
 
+### 手机上的多行省略
+```css
+.overflow-hidden{
+    display: box !important;
+    display: -webkit-box !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;/*第几行出现省略号*/
+    /*text-align:justify;不能和溢出隐藏的代码一起写，会有bug*/
+}
+
+```
+
+### 使用Boolean过滤数组中的所有假值
+我们知道JS中有一些假值：false，null，0，""，undefined，NaN，怎样把数组中的假值快速过滤呢，可以使用Boolean构造函数来进行一次转换
+```js
+const compact = arr => arr.filter(Boolean)
+compact([0, 1, false, 2, '', 3, 'a', 'e' * 23, NaN, 's', 34])   // [1, 2, 3, "a", "s", 34]
+```
+
+### 双位运算符 ~~
+可以使用双位操作符来替代正数的 `Math.floor( )`，替代负数的`Math.ceil( )`。双否定位操作符的优势在于它执行相同的操作运行速度更快。
+```js
+~~4.5                // 4
+Math.floor(4.5)      // 4
+Math.ceil(4.5)       // 5
+
+~~-4.5                // -4
+Math.floor(-4.5)     // -5
+Math.ceil(-4.5)      // -4
+```
+
+### 取整 | 0
+对一个数字`| 0`可以取整，负数也同样适用，`num | 0`
+```js
+1.3 | 0         // 1
+-1.9 | 0        // -1
+```
