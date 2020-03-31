@@ -307,3 +307,12 @@ document.body.contentEditable = 'true'
 https://view.officeapps.live.com/op/view.aspx?src=https://res.wxsrtgg.com/2019_04_05_16_31_05_462/e42bf29e-23f0-4700-b34d-b860b0a21c27.%E8%AF%B7%E5%81%87%E5%8D%95%E6%A8%A1%E6%9D%BF.xlsx
 
 > `https://view.officeapps.live.com/op/view.aspx?src=`后面加文件的绝对地址就可以在浏览器中预览文档了
+
+### 两种方法实现查找数组中的最大值和最小值
+```js
+let arr = [12,35,16,9,90,54]
+Math.max(...arr) // 90
+Math.min(...arr) // 9
+Math.max.apply(null,arr) // 90
+Math.min.apply(null,arr) // 9
+```
