@@ -115,3 +115,45 @@ if(offsetTop < scrollTop + clientHeight && offsetTop + objHeight > scrollTop) { 
        name="file" accept="image/*" @change='getFile($event)'/>
 ```
 accept="camera" 只调用相机
+
+# vue插件开发
+> Vue.js的插件应该暴露一个`install`方法，这个方法的第一个参数是`vue`构造器，第二个参数是一个可选的选项对象
+
+```js
+MyPlugin.install = function(Vue,options){
+  // 1.添加全局方法或者属性
+  Vue.muGlobalMethod = function(){
+    // 逻辑
+  }
+
+  // 2.添加全局资源
+  Vue.direative("my-dirctive",{
+    bind(el,binding,vnode,oldVnode){
+      // 逻辑
+    }
+  })
+
+  // 3.注入组件选项
+  Vue.mixin({
+    created:function(){
+      // 逻辑
+    }
+  })
+
+  // 4.添加实例方法
+  Vue.protopyte.$myMthod = function(mthodOptions){
+    // 逻辑
+  }
+}
+```
+
+
+### 在动态组件上使用 `keep-alive`
+> 新创建动态组件的行为通常是非常有用的，但是在这个案例中，我们更希望那些标签的组件实例能够被在它们第一次被创建的时候缓存下来。为了解决这个问题，我们可以用一个 <keep-alive> 元素将其动态组件包裹起来。
+
+```html
+<!-- 失活的组件将会被缓存！-->
+<keep-alive>
+  <component v-bind:is="currentTabComponent"></component>
+</keep-alive>
+```
