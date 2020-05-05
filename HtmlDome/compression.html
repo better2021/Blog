@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片压缩</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .inputBox{
+            outline: none;
+            border-radius: 5px;
+            border: blueviolet 1px solid;
+        }
+        .download{
+            display: none;
+            color: red;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex;">
+        <input type="file" accept="image/*" class="inputBox" id="file">
+        <a href="" download="图片压缩" class="download">下载压缩后的图片</a>
+    </div>
+    <div style="margin-top: 10px;">
+        <img src="" id="img">
+    </div>
+</body>
+<script>
+    let file = document.getElementById("file")
+    file.onchange = function(e){
+        // console.log(e)
+        compress()
+    }
+
+    // 对图片进行压缩
+    function compress(){
+        let fileObj = file.files[0]
+        let size = (fileObj.size/1024/1024).toFixed(2)
+        console.log(fileObj.type,fileObj.name.replace(/.jpg|.png|.gif|.webp/g,""))
+        console.log(`图片大小：${size}M`)
+        // if(size > 2){
+        //     alert("上传图片不能大于2M")
+        // }
+
+        let reader = new FileReader()
+        reader.readAsDataURL(fileObj) //  读取图片信息
+        reader.onload = function(e){
+            // console.log(e.target.result)
+            let image = new Image() //  新建一个img标签
+            image.src = e.target.result
+            image.onload = function(){ // 图片加载完成
+                let canvas = document.createElement("canvas"),
+                img = document.getElementById("img"),
+                content = canvas.getContext("2d"),
+                download = document.querySelector(".download")
+                imageWidth = image.width * 0.8, // 压缩后图片的大小
+                imageHeight = image.height * 0.8
+                
+                canvas.width = imageWidth
+                canvas.height = imageHeight
+                content.drawImage(image,0,0,imageWidth,imageHeight)
+
+                // toBlob(canvas,img,download) // 压缩图片
+                toBase(canvas,img,download)  // 压缩图片
+                download.style.display = "block"
+
+                console.log(download)
+            }
+            
+        }
+    }
+
+    // 转化为blob二进制数据
+    function toBlob(canvas,img,download){
+        canvas.toBlob(function(blob){         
+            var url = URL.createObjectURL(blob);
+            console.log(blob,url)
+            img.src = url
+            download.setAttribute("href",url)
+        },"image/jpeg",0.9) // 第二个参数表示图片压缩质量为0.9
+    }
+
+    // 转化为base64格式
+    function toBase(canvas,img,download){
+        let dataUrl = ""
+        dataUrl = canvas.toDataURL("image/jpeg",0.8) // // 第二个参数表示图片压缩质量为0.8
+        console.log(dataUrl)
+        img.src = dataUrl
+        download.setAttribute("href",dataUrl)
+    }
+</script>
+</html>
