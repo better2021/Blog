@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>图片压缩</title>
+    <title>图片压缩及zip文件</title>
     <style>
         *{
             margin: 0;
@@ -25,14 +25,19 @@
     <div style="display: flex;">
         <input type="file" accept="image/*" class="inputBox" id="file">
         <a href="" download="图片压缩" class="download">下载压缩后的图片</a>
+        <button style="margin-left: 10px;display: none" id="btn">下载zip包</button>
     </div>
     <div style="margin-top: 10px;">
         <img src="" id="img">
     </div>
 </body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.3.0/jszip.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
 <script>
     let file = document.getElementById("file")
-    file.onchange = function(e){
+    let btn = document.getElementById("btn")
+
+    file.onchange = (e)=>{
         // console.log(e)
         compress()
     }
@@ -46,11 +51,13 @@
         // if(size > 2){
         //     alert("上传图片不能大于2M")
         // }
-
         let reader = new FileReader()
         reader.readAsDataURL(fileObj) //  读取图片信息
         reader.onload = function(e){
-            // console.log(e.target.result)
+            btn.addEventListener("click",()=>{
+                toZip(e.target.result)
+            },false)
+            // console.log(e.target.result,"--")
             let image = new Image() //  新建一个img标签
             image.src = e.target.result
             image.onload = function(){ // 图片加载完成
@@ -68,10 +75,10 @@
                 // toBlob(canvas,img,download) // 压缩图片
                 toBase(canvas,img,download)  // 压缩图片
                 download.style.display = "block"
+                btn.style.display = "block"
 
                 console.log(download)
             }
-            
         }
     }
 
@@ -89,9 +96,31 @@
     function toBase(canvas,img,download){
         let dataUrl = ""
         dataUrl = canvas.toDataURL("image/jpeg",0.8) // // 第二个参数表示图片压缩质量为0.8
-        console.log(dataUrl)
+        // console.log(dataUrl)
         img.src = dataUrl
         download.setAttribute("href",dataUrl)
+    }
+
+    // 压缩文件为zip
+    function toZip(imgData){    
+        let zip = new JSZip();
+        // 向zip文件中添加图片，可以添加多个文件或者图片，此处以图片为例
+        // base64图片需要去掉base64图片标识
+        zip.file("hello.txt","this is a hello 的 例子")
+        let img = zip.folder("images")
+        img.file("car.jpg",imgData.split(",")[1],{base64:true}) // 需求去掉前面的base64等字符
+        zip.generateAsync({
+            type:"blob", // 压缩类型
+            compression: "DEFLATE",      // STORE：默认不压缩 DEFLATE：需要压缩
+            compressionOptions:{
+                level: 9  // 压缩等级1~9    1压缩速度最快，9最优压缩方式
+            }
+        }).then(function(content){
+            // 压缩的结果为blob类型（二进制流）,可用作文件上传
+            console.log(content)
+            // 直接在浏览器打成car.zip包并下载，saveAs依赖的js是FileSaver.js
+            saveAs(content,"test.zip")
+        })
     }
 </script>
 </html>
