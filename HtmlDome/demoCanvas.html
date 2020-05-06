@@ -4,7 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>canvas</title>
+    <style>
+      .canvasBox{
+        position: relative;
+      }
+      .canvasBox .lang{
+        position: absolute;
+      }
+    </style>
   </head>
   <body>
     <canvas id="myCanvas"></canvas>
@@ -107,4 +115,67 @@
     // 向document中添加 <script> 标签，并且发送GET请求
     document.body.appendChild(script);
   </script>
+
+  
+  <!-- cavans波浪效果 -->
+  <div class="canvasBox">
+    <canvas id="canvas1" class="lang"></canvas>
+    <canvas id="canvas2" class="lang"></canvas>
+    <canvas id="canvas3" class="lang"></canvas>
+  </div>
+  
+  <script>
+    wave("canvas1", 200, "rgba(0, 188, 212, 0.3)", 3000);
+    wave("canvas2", 180, 'rgba(156, 39, 176, 0.5)', 2500);
+    wave("canvas3", 150, 'rgba(255, 192, 203, 0.3)', 2000);
+
+    /**
+    * 底部波浪
+    * @param $canvasID     canvasID
+    * @param $progress     波浪位置的高度
+    * @param $maveColor    波浪颜色
+    * @param $time         运动周期
+    */
+    function wave($canvasID, $progress, $maveColor, $time) {
+        let waveWidth = 3300,
+            offset = 0,
+            waveHeight = 30,  // 波浪高度
+            waveCount = 4,  // 波浪个数
+            startX = -1000,
+            startY = 212,   // canvas 高度
+            progress = $progress,// 波浪位置的高度
+            d2 = waveWidth / waveCount,// 单个波浪的宽度
+            d = d2 / 2,
+            hd = d / 2,
+            c = document.getElementById($canvasID),
+            ctx = c.getContext("2d");
+        c.width = 1920;
+        c.height = 212;
+
+        function move() {
+            offset -= 5;
+            if (-1 * offset === d2) offset = 0;
+            ctx.clearRect(0, 0, c.width, c.height);
+            ctx.fillStyle = $maveColor;
+            ctx.beginPath();
+            let offsetY = startY - progress;
+            ctx.moveTo(startX - offset, offsetY);
+            for (let i = 0; i < waveCount; i++) {
+                let dx = i * d2;
+                let offsetX = dx + startX - offset;
+                ctx.quadraticCurveTo(offsetX + hd, offsetY + waveHeight, offsetX + d, offsetY);
+                ctx.quadraticCurveTo(offsetX + hd + d, offsetY - waveHeight, offsetX + d2, offsetY);
+            }
+            ctx.lineTo(startX + waveWidth, 3000);
+            ctx.lineTo(startX, 3000);
+            ctx.fill();
+
+            setTimeout(move, $time / 60);    //速度
+        }
+
+        move();
+    }
+  </script>
+
+</script>
 </html>
