@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站域名报毒检测</title>
+</head>
+<body>
+    <div>
+        <p>接口地址：https://api.66mz8.com/api/check.php</p>
+        <p>返回格式：json</p>
+        <p>请求方式：get/post</p>
+        <p>请求示例：https://api.66mz8.com/api/check.php?url=http://www.baidu.com</p>        
+    </div>
+    <div>
+        <h3>url	是	string	需要检测的域名，如：http://www.baidu.com</h3>
+        <div>
+            <input type="text" value="" id="text">
+            <button id="btn">检测域名报毒</button>
+        </div>
+        <div>
+            <h4>检测域名为：<span id="website" style="color:red"></span></h4>
+            <h4>检测结果：<span id="result" style="color:red"></span></h4>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    let api = 'https://api.66mz8.com/api/check.php'
+
+    function checkUrl(url){
+        $.ajax({
+        url:api,
+        method:'GET',
+        data:{url},
+        dataType:'json'
+        }).done(res=>{
+            if(res.code===200){
+                console.log(res)
+                $("#result").text(res.state)
+                $("#website").text(res.url)
+                return
+            }
+            console.error(res.msg)
+        }).fail(err=>{
+            console.log(err)
+        })
+    }
+
+    $("#btn").click(()=>{
+        let url = $('#text').val().trim()
+        checkUrl(url||'http://www.baidu.com')
+        console.log(url)
+    })
+    
+</script>
+</html>
