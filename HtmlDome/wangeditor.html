@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>富文本编辑器</title>
+    <style>
+        .sure{
+            margin-left: 20px;
+        }
+        #editor{
+            width: 800px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>富文本编辑器</h3>
+    <div id="editor">
+        <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+    </div>
+
+    <button class="clear">清空内容</button>
+    <button class="sure">读取内容</button>
+    <script src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
+    <script>
+        let Editor = window.wangEditor
+        let edit = document.getElementById("editor")
+        let editor = new Editor(edit)
+        // 自定义菜单配置
+        //  editor.customConfig.menus = [
+        //     'head',
+        //     'bold',
+        //     'italic',
+        //     'underline'
+        // ]
+
+        // 禁用与开启编辑功能
+        // editor.$textElem.attr('contenteditable', true)
+
+        editor.customConfig.linkImgCallback = function (url) {
+            console.log(url,"图片地址") // url 即插入图片的地址
+        }
+
+        editor.create()
+
+        editor.txt.html('<p>用 JS 设置的内容</p>')
+
+        let clear = document.querySelector(".clear")
+        clear.onclick = function(){
+            editor.txt.clear() // 清空编辑器内容
+        }
+
+        document.querySelector(".sure").addEventListener('click',function(){
+            // 读取html内容
+            console.log(editor.txt.html())
+
+            // 读取text内容
+            console.log(editor.txt.text())
+
+            // 获取 JSON 格式的内容
+            let json = editor.txt.getJSON()
+            let jsonStr = JSON.stringify(json)
+            console.log(json) 
+        },false)
+    </script>
+</body>
+</html>
