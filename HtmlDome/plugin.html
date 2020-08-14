@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jq插件</title>
+    <style>
+      .one {
+        width: 150px;
+        height: 200px;
+        background: rgba(235, 145, 32, 0.5);
+      }
+      .two {
+        width: 150px;
+        height: 230px;
+        background: rgba(235, 56, 32, 0.5);
+      }
+      .three {
+        width: 100px;
+        height: 150px;
+        background: rgba(98, 145, 32, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="one"></div>
+      <div class="two"></div>
+      <div class="three"></div>
+      <span id="txt"></span>
+    </div>
+  </body>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="./js/myPlugin.js"></script>
+  <script>
+    $(function () {
+      $.sayHello('xiaoming'); // 带参数调用
+      $.log('init...');
+      $('div').maxHeight();
+      $('.one').tooltip({
+        background: 'red',
+      });
+      $('.two').tooltip({
+        background: 'blue',
+      });
+      $('.three').tooltip({
+        background: 'pink',
+      });
+      let timer = setInterval(() => {
+        $('#txt').text($.log());
+      }, 1000);
+      window.onunload = function () {
+        clearInterval(timer);
+      };
+    });
+  </script>
+</html>
