@@ -54,4 +54,85 @@
       };
     });
   </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r119/three.min.js"></script>
+  <script>
+    window.addEventListener('load', init);
+
+    function init() {
+      // 指定宽度和高度
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      //创建渲染
+      const renderer = new THREE.WebGLRenderer();
+      document.body.appendChild(renderer.domElement);
+
+      // 创建文件
+      const scene = new THREE.Scene();
+
+      // 创建相机
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+      camera.position.z = 500;
+
+      // ポイントを作成
+      const points = [
+        [60, 180],
+        [120, 240],
+        [180, 300],
+        [280, 180],
+        [180, 120],
+        [60, 60],
+        [60, 180],
+      ];
+      for (let i = 0; i < points.length; i++) {
+        const x = points[i][0];
+        const y = points[i][0];
+        const z = points[i][1];
+        points[i] = new THREE.Vector3(x, y, z);
+      }
+
+      // 创建点
+      const path = new THREE.CatmullRomCurve3(points);
+
+      // 创建几何
+      const geometry = new THREE.TubeGeometry(path, 100, 10, 10, true);
+
+      // 创建素材
+      const material = new THREE.MeshLambertMaterial({
+        color: 0x64e5e8,
+        wireframe: true,
+      });
+
+      //创建网格
+      const mesh = new THREE.Mesh(geometry, material);
+      const ambient = new THREE.AmbientLight();
+      scene.add(mesh, ambient);
+
+      let percentage = 0;
+      function render() {
+        percentage += 0.001;
+        const p1 = path.getPointAt(percentage % 1);
+        const p2 = path.getPointAt((percentage + 0.01) % 1);
+        camera.position.set(p1.x, p1.y, p1.z);
+        camera.lookAt(p2);
+        renderer.render(scene, camera);
+        requestAnimationFrame(render);
+      }
+
+      render();
+
+      window.addEventListener('resize', onResize);
+
+      // 调整后的版本
+      function onResize() {
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      }
+
+      onResize();
+    }
+  </script>
 </html>
