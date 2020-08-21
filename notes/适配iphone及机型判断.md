@@ -149,6 +149,7 @@ if (isiOS) {
 /**
  *  判断是否为PC端
  */
+```js 
 export const isPC = (() => {
   //是否为PC端
   const userAgentInfo = navigator.userAgent;
@@ -169,3 +170,4 @@ export const isPC = (() => {
   }
   return flag;
 })()
+```
