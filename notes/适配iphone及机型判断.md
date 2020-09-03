@@ -145,3 +145,29 @@ if (isiOS) {
   window.location.href = 'http://xxxxxxxqqqq.apk'
 }
 ```
+
+/**
+ *  判断是否为PC端
+ */
+```js 
+export const isPC = (() => {
+  //是否为PC端
+  const userAgentInfo = navigator.userAgent;
+  const Agents = [
+    "Android",
+    "iPhone",
+    "SymbianOS",
+    "Windows Phone",
+    "iPad",
+    "iPod"
+  ];
+  let flag = true;
+  for (let v = 0; v < Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      flag = false;
+      break;
+    }
+  }
+  return flag;
+})()
+```
