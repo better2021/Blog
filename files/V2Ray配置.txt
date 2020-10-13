@@ -1,0 +1,133 @@
+hostname: v2ray-01
+
+---------- V2Ray 配置信息 -------------
+
+ 地址 (Address) = 47.242.137.199
+
+ 端口 (Port) = 22763
+
+ 用户ID (User ID / UUID) = 0d6febd6-d56e-4bb2-b635-0653d68ea762
+
+ 额外ID (Alter Id) = 0
+
+ 传输协议 (Network) = tcp
+
+ 伪装类型 (header type) = none
+
+---------- END -------------
+
+V2Ray 客户端使用教程: https://233v2.com/post/4/
+
+提示: 输入 v2ray url 可生成 vmess URL 链接 / 输入 v2ray qr 可生成二维码链接
+
+免被墙..推荐使用JMS: https://getjms.com
+
+
+---------- Shadowsocks 配置信息 -------------
+
+ 服务器地址 = 47.242.137.199
+
+ 服务器端口 = 44301
+
+ 密码 = tgops123..
+
+ 加密协议 = chacha20-ietf-poly1305
+
+ SS 链接 = ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp0Z29wczEyMy4uQDQ3LjI0Mi4xMzcuMTk5OjQ0MzAx#233v2.com_ss_47.242.137.199
+
+ 备注: Shadowsocks Win 4.0.6 客户端可能无法识别该 SS 链接
+
+提示: 输入 v2ray ssqr 可生成 Shadowsocks 二维码链接
+
+免被墙..推荐使用JMS: https://getjms.com
+
+#####################################################################################################################################
+
+hostname: v2ray-02
+
+---------- V2Ray 配置信息 -------------
+
+ 地址 (Address) = 47.242.130.156
+
+ 端口 (Port) = 26038
+
+ 用户ID (User ID / UUID) = 8071a6d7-d9fa-41f5-8d71-0d6661f991e4
+
+ 额外ID (Alter Id) = 0
+
+ 传输协议 (Network) = tcp
+
+ 伪装类型 (header type) = none
+
+---------- END -------------
+
+V2Ray 客户端使用教程: https://233v2.com/post/4/
+
+提示: 输入 v2ray url 可生成 vmess URL 链接 / 输入 v2ray qr 可生成二维码链接
+
+免被墙..推荐使用JMS: https://getjms.com
+
+
+---------- Shadowsocks 配置信息 -------------
+
+ 服务器地址 = 47.242.130.156
+
+ 服务器端口 = 39512
+
+ 密码 = tgops123..
+
+ 加密协议 = chacha20-ietf-poly1305
+
+ SS 链接 = ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp0Z29wczEyMy4uQDQ3LjI0Mi4xMzAuMTU2OjM5NTEy#233v2.com_ss_47.242.130.156
+
+ 备注: Shadowsocks Win 4.0.6 客户端可能无法识别该 SS 链接
+
+提示: 输入 v2ray ssqr 可生成 Shadowsocks 二维码链接
+
+免被墙..推荐使用JMS: https://getjms.com
+
+
+#####################################################################################################################################
+
+hostname: v2ray-03
+
+---------- V2Ray 配置信息 -------------
+
+ 地址 (Address) = 8.210.189.52
+
+ 端口 (Port) = 35247
+
+ 用户ID (User ID / UUID) = 97186748-8e6f-420f-857c-00d1abba4310
+
+ 额外ID (Alter Id) = 0
+
+ 传输协议 (Network) = tcp
+
+ 伪装类型 (header type) = none
+
+---------- END -------------
+
+V2Ray 客户端使用教程: https://233v2.com/post/4/
+
+提示: 输入 v2ray url 可生成 vmess URL 链接 / 输入 v2ray qr 可生成二维码链接
+
+免被墙..推荐使用JMS: https://getjms.com
+
+
+---------- Shadowsocks 配置信息 -------------
+
+ 服务器地址 = 8.210.189.52
+
+ 服务器端口 = 38201
+
+ 密码 = tgops123..
+
+ 加密协议 = chacha20-ietf-poly1305
+
+ SS 链接 = ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp0Z29wczEyMy4uQDguMjEwLjE4OS41MjozODIwMQ==#233v2.com_ss_8.210.189.52
+
+ 备注: Shadowsocks Win 4.0.6 客户端可能无法识别该 SS 链接
+
+提示: 输入 v2ray ssqr 可生成 Shadowsocks 二维码链接
+
+免被墙..推荐使用JMS: https://getjms.com
