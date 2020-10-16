@@ -316,3 +316,41 @@ Math.min(...arr) // 9
 Math.max.apply(null,arr) // 90
 Math.min.apply(null,arr) // 9
 ```
+
+### 双指行为的判断
+```js
+document.addEventListener('touchmove',function(event){
+  if(event.touches && event.touches.length == 2){
+    console.log('双指在移动')
+  }
+})
+```
+
+### File对象转ArrayBuffer
+```js
+file.onchange = function (event) {
+    var file = event.target.files[0];
+    // 开始识别
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        var arrBuffer = event.target.result;
+        // arrBuffer就是包含音频数据的ArrayBuffer对象
+    });
+    reader.readAsArrayBuffer(file);
+};
+```
+
+### FormData进行上传
+```js
+var formData = new FormData()
+formData.append('audio',blob)
+// 请求
+var xhr = new XMLHpptRequest()
+xhr.open('POST',this.cgiGetImg,true)
+// 请求成功
+xhr.onload =  function(){
+  // 成功后的处理
+}
+// 发送数据
+xhr.send(formData)
+```
