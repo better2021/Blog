@@ -15,7 +15,7 @@
 
 
 ### 在docker中安装mysql和redis镜像文件
-
+*** 注意要在上面的`sqlDate`文件夹下打开cmder ***
 
 ```js
 // 在cmder中执行以下命令就可以安装mysql和redis
