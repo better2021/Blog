@@ -12,3 +12,14 @@
 > [es6语法学习](https://github.com/feiyuWeb/Blog/blob/master/notes/es6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
 
 ### [更多blog文章请看notes文件夹](https://github.com/feiyuWeb/Blog/tree/master/notes)
+
+
+### 在docker中安装mysql和redis镜像文件
+
+
+```js
+// 在cmder中执行以下命令就可以安装mysql和redis
+docker-compose up -d
+```
+
+![sql和redis的镜像安装.png](https://i.loli.net/2020/10/21/8flR1wAZKpdFDhr.png)
