@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:4.0.14-alpine
+    container_name: redis-dev
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data/redis:/data
+    networks:
+      - my-bridge
+
+  mysql:
+    image: mysql:8.0.22
+    container_name: mysql-dev
+    restart: always
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data/mysql:/var/lib/mysql
+      - ./mysql.cnf:/etc/mysql/conf.d/mysql.cnf
+    networks:
+      - my-bridge
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root 
+      MYSQL_DATABASE: 709463253
+
+
+networks:
+  my-bridge:
+    driver: bridge
