@@ -1,3 +1,6 @@
+[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=feiyuWeb)](https://github.com/feiyuWeb/github-readme-stats)
+
+
 # feiyu.github.io
 >个人博客
 
@@ -24,4 +27,4 @@ docker-compose up -d
 
 ![sql和redis的镜像安装.png](https://i.loli.net/2020/10/21/8flR1wAZKpdFDhr.png)
 
-[![Anurag's github stats](https://github-readme-stats.vercel.app/api?username=feiyuWeb)](https://github.com/feiyuWeb/github-readme-stats)
+
