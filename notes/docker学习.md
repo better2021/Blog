@@ -1,17 +1,17 @@
 ### docker 的基本组成
 
-- Docker Client 客户端
-- Docker Daemon 守护进程
-- Docker Image 镜像
-- Docker Container 容器
-- Docker Registry 仓库
+-   Docker Client 客户端
+-   Docker Daemon 守护进程
+-   Docker Image 镜像
+-   Docker Container 容器
+-   Docker Registry 仓库
 
 ### docker 容器的能力
 
-- 文件系统隔离：每个容器都有自己的 root 文件系统
-- 进程隔离：每个容器都运行在自己的进程环境中
-- 网络隔离：容器间的虚拟机网络接口和 IP 地址都是分开的
-- 资源隔离和分组：使用 cgroups 将 CPU 和内存之类的资源独立分配给每个 Docker 容器
+-   文件系统隔离：每个容器都有自己的 root 文件系统
+-   进程隔离：每个容器都运行在自己的进程环境中
+-   网络隔离：容器间的虚拟机网络接口和 IP 地址都是分开的
+-   资源隔离和分组：使用 cgroups 将 CPU 和内存之类的资源独立分配给每个 Docker 容器
 
 ### docker 常用命令
 
@@ -52,20 +52,20 @@ docker run -p 8081:80 --name mynginx  -d nginx
 
 ### Dockerfile 指令
 
-- FROM <可用的镜像名>
-- MAINTAINER <name>
-- RUN
-- EXPOSE
+-   FROM <可用的镜像名>
+-   MAINTAINER <name>
+-   RUN
+-   EXPOSE
 
-- CMD // 可以当做 RUN 指令的默认指令，RUN 的优先权更高
-- ENTERYPOINT
-- ADD
-- COPY
-- VOLUME
+-   CMD // 可以当做 RUN 指令的默认指令，RUN 的优先权更高
+-   ENTERYPOINT
+-   ADD
+-   COPY
+-   VOLUME
 
-- WORKDIR
-- ENV
-- USER
+-   WORKDIR
+-   ENV
+-   USER
 
 > 例如：
 > FROM ubuntu:14.04
@@ -112,7 +112,7 @@ docker image build -t koa-demo:0.0.1 . // 最后的一个点是表示路劲为�
 // 指定基础镜像，本地没有会从dockerHub pull下来
 FROM java:8
 // 作者
-MAINTAINER feiyu
+MAINTAINER coco
 // 把可执行jar包复制到基础镜像的根目录下
 ADD luban.jar /luban.jar
 // 镜像要暴露的端口，如要使用端口，在执行docker run命令时使用-p生效
@@ -133,9 +133,9 @@ RUN <command>
 > 使用`docker build`命令构建镜像，基本语法
 
 ```go
-docker build -t feiyu/mypro:v1
+docker build -t coco/mypro:v1
 ```
 
-- -f 指定 Dockerfile 文件的路劲
-- -t 指定镜像名字和 TAG
-- . 指定当前目录，这里实际上需要一个上下文路径
+-   -f 指定 Dockerfile 文件的路劲
+-   -t 指定镜像名字和 TAG
+-   . 指定当前目录，这里实际上需要一个上下文路径
