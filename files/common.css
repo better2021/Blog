@@ -1,0 +1,185 @@
+*{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body,ul,li,h1,h2,h3,h4,h5,h6,p,ol,li,dt,dd,dl{
+    border:none;
+    list-style: none;
+    font-weight: normal;
+    
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑","Microsoft YaHei";
+    -webkit-transition: opacity .5s ease;
+    transition: opacity .5s ease;
+}
+img{
+	vertical-align:bottom; 
+	display:block;
+}
+a{
+    text-decoration: none;
+}
+
+a img{
+	border: none;
+}
+
+.clear:after{
+	content: "";
+	display: block;
+	clear:both;
+}
+.cbefore:before {
+  content: "";
+  display: table;
+}
+html{
+    font-size: 100px;
+}
+@media (max-width: 1023px) {html {font-size:136.53333333333333px;}}
+
+@media (max-width: 1014px) {html {font-size:135.20000000000002px;}}
+
+@media (max-width: 1004px) {html {font-size:133.86666666666667px;}}
+
+@media (max-width: 994px) {html {font-size:132.53333333333333px;}}
+
+@media (max-width: 984px) {html {font-size:131.20000000000002px;}}
+
+@media (max-width: 974px) {html {font-size:129.86666666666667px;}}
+
+@media (max-width: 964px) {html {font-size:128.53333333333333px;}}
+
+@media (max-width: 954px) {html {font-size:127.2px;}}
+
+@media (max-width: 944px) {html {font-size:125.86666666666666px;}}
+
+@media (max-width: 934px) {html {font-size:124.53333333333335px;}}
+
+@media (max-width: 924px) {html {font-size:123.2px;}}
+
+@media (max-width: 914px) {html {font-size:121.86666666666666px;}}
+
+@media (max-width: 904px) {html {font-size:120.53333333333333px;}}
+
+@media (max-width: 894px) {html {font-size:119.19999999999999px;}}
+
+@media (max-width: 884px) {html {font-size:117.86666666666667px;}}
+
+@media (max-width: 874px) {html {font-size:116.53333333333333px;}}
+
+@media (max-width: 864px) {html {font-size:115.19999999999999px;}}
+
+@media (max-width: 854px) {html {font-size:113.86666666666667px;}}
+
+@media (max-width: 844px) {html {font-size:112.53333333333333px;}}
+
+@media (max-width: 834px) {html {font-size:111.20000000000002px;}}
+
+@media (max-width: 824px) {html {font-size:109.86666666666667px;}}
+
+@media (max-width: 814px) {html {font-size:108.53333333333333px;}}
+
+@media (max-width: 804px) {html {font-size:107.2px;}}
+
+@media (max-width: 794px) {html {font-size:105.86666666666666px;}}
+
+@media (max-width: 784px) {html {font-size:104.53333333333332px;}}
+
+@media (max-width: 774px) {html {font-size:103.2px;}}
+
+@media (max-width: 764px) {html {font-size:101.86666666666666px;}}
+
+@media (max-width: 750px) {html {font-size:100px;}}
+
+@media (max-width: 740px) {html {font-size:98.66666666666667px;}}
+
+@media (max-width: 730px) {html {font-size:97.33333333333334px;}}
+
+@media (max-width: 720px) {html {font-size:96px;}}
+
+@media (max-width: 710px) {html {font-size:94.66666666666667px;}}
+
+@media (max-width: 700px) {html {font-size:93.33333333333333px;}}
+
+@media (max-width: 690px) {html {font-size:92px;}}
+
+@media (max-width: 680px) {html {font-size:90.66666666666666px;}}
+
+@media (max-width: 670px) {html {font-size:89.33333333333333px;}}
+
+@media (max-width: 660px) {html {font-size:88px;}}
+
+@media (max-width: 650px) {html {font-size:86.66666666666667px;}}
+
+@media (max-width: 640px) {html {font-size:85.33333333333334px;}}
+
+@media (max-width: 630px) {html {font-size:84px;}}
+
+@media (max-width: 620px) {html {font-size:82.66666666666667px;}}
+
+@media (max-width: 610px) {html {font-size:81.33333333333333px;}}
+
+@media (max-width: 600px) {html {font-size:80px;}}
+
+@media (max-width: 590px) {html {font-size:78.66666666666666px;}}
+
+@media (max-width: 580px) {html {font-size:77.33333333333333px;}}
+
+@media (max-width: 570px) {html {font-size:76px;}}
+
+@media (max-width: 560px) {html {font-size:74.66666666666667px;}}
+
+@media (max-width: 550px) {html {font-size:73.33333333333333px;}}
+
+@media (max-width: 540px) {html {font-size:72px;}}
+
+@media (max-width: 530px) {html {font-size:70.66666666666667px;}}
+
+@media (max-width: 520px) {html {font-size:69.33333333333334px;}}
+
+@media (max-width: 510px) {html {font-size:68px;}}
+
+@media (max-width: 500px) {html {font-size:66.66666666666666px;}}
+
+@media (max-width: 490px) {html {font-size:65.33333333333333px;}}
+
+@media (max-width: 480px) {html {font-size:64px;}}
+
+@media (max-width: 470px) {html {font-size:62.66666666666667px;}}
+
+@media (max-width: 460px) {html {font-size:61.33333333333333px;}}
+
+@media (max-width: 450px) {html {font-size:60px;}}
+
+@media (max-width: 440px) {html {font-size:58.666666666666664px;}}
+
+@media (max-width: 430px) {html {font-size:57.333333333333336px;}}
+
+@media (max-width: 420px) {html {font-size:56.00000000000001px;}}
+
+@media (max-width: 410px) {html {font-size:54.666666666666664px;}}
+
+@media (max-width: 400px) {html {font-size:53.333333333333336px;}}
+
+@media (max-width: 390px) {html {font-size:52px;}}
+
+@media (max-width: 380px) {html {font-size:50.66666666666667px;}}
+
+@media (max-width: 370px) {html {font-size:49.333333333333336px;}}
+
+@media (max-width: 360px) {html {font-size:48px;}}
+
+@media (max-width: 350px) {html {font-size:46.666666666666664px;}}
+
+@media (max-width: 340px) {html {font-size:45.33333333333333px;}}
+
+@media (max-width: 330px) {html {font-size:44px;}}
+
+@media (max-width: 320px) {html {font-size:42.66666666666667px;}}
