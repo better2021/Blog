@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf8">
+    <title>requestAnimationFrame动画</title>
+    <style>
+        #rect{
+           width: 100px;
+           height: 100px;
+           background: red;    
+           position: absolute;
+           left: 10px; 
+           top: 5px
+        }
+    </style>
+</head>
+<body>
+    <div id="rect">
+    </div>
+    <script>
+         var dome = document.getElementById("rect")
+         var left = 0
+         var down = 0
+         var time
+         var flag = false
+         function render(){
+            if(left < 800){
+                left += 2 // 这里的数字可以控制方块移动的速度
+                dome.style.left = left
+                time = window.requestAnimationFrame(render)
+            }else{
+                down += 3
+                dome.style.top = down
+                if(down < 800){
+                    time = window.requestAnimationFrame(render)
+                }
+            }
+         }
+        time = window.requestAnimationFrame(render)
+
+        window.onclick = function(){
+            console.log(time)
+            flag = !flag 
+            if(flag){
+                window.cancelAnimationFrame(time)
+            }else{
+                window.requestAnimationFrame(render)
+            }
+         
+        }
+
+    </script>
+</body>
+</html>
