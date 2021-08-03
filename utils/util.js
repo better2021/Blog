@@ -14,10 +14,6 @@ export const localRead = (key, defaultValue = "") => {
 	return localStorage.getItem(key) || defaultValue
 }
 
-/**
- * @param {*} time
- */
-export const delay = (time) => new Promise((r) => setTimeout(r, time))
 
 /**
  * 表单生成器
@@ -65,6 +61,7 @@ export const downloadImg = (url, name) => {
 }
 
 /**
+ * 获取url的问号后的参数并且组成对象形式
  * @param {string} url
  * @returns {Object}
  */
@@ -88,7 +85,7 @@ export function param2Obj(url) {
  * 函数防抖
  * @param {Function} func
  * @param {number} wait 单位秒 s
- * @param {boolean} immediate
+ * @param {boolean} immediate 是否立即执行
  * @return {*}
  */
 export function debounce(func, wait, immediate) {
@@ -126,10 +123,24 @@ export function debounce(func, wait, immediate) {
 	}
 }
 
+// 防抖函数使用实例
+function handle(){
+    console.log("防抖",Math.random())
+}
+
+window.addEventListener("keyup",debounce(handle,500,false))
+
+
 /**
  * 函数节流
+ * @param {*} fn 
+ * @param {*} delayTime 
+ * @returns 
  */
-// 定时器方式
+
+/*适用场景
+懒加载监听浏览器滚动位置*/
+
 let throttle = function (fn, delayTime) {
 	let flag
 	return function () {
@@ -143,6 +154,14 @@ let throttle = function (fn, delayTime) {
 		}
 	}
 }
+
+// 函数节流使用实例
+function handleSroll(){
+    console.log("节流",Math.random())
+}
+
+window.addEventListener("scroll",throttle(handleSroll,500))
+
 
 // 获取数组中的最大值与最小值
 let arr = [2, 3, 9, 6, 5]
